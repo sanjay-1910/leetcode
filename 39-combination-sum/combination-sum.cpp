@@ -3,17 +3,13 @@ public:
     vector<vector<int>>final;
     void san(vector<int>&candidates,vector<int>ans,int sum,int target,int index,int size)
     {
-        if(sum>target)
+        if(sum>target || index>=size)
         {
             return;
         }
         if(sum==target)
         {
             final.push_back(ans);
-            return;
-        }
-        if(index>=size)
-        {
             return;
         }
         ans.push_back(candidates[index]);
