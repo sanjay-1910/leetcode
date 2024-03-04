@@ -16,7 +16,7 @@ class Solution:
                 j=j-1
                 score=score-1
             else:
-                break
+                i=i+1
         return mscore
 
         
