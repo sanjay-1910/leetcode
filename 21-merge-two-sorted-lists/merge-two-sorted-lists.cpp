@@ -15,7 +15,6 @@ public:
         ListNode* temp2 = list2;
         ListNode* fina = new ListNode(0);
         ListNode* current = fina;
-
         while (temp != NULL && temp2 != NULL) {
             if (temp->val <= temp2->val) {
                 current->next = new ListNode(temp->val);
@@ -26,18 +25,13 @@ public:
             }
             current = current->next;
         }
-
-        // Append the remaining nodes of list1 or list2
         if (temp != NULL) {
             current->next = temp;
         } else {
             current->next = temp2;
         }
-
-        // Save the head of the merged list and delete the dummy node
         ListNode* mergedList = fina->next;
         delete fina;
-
         return mergedList;
     }
 };
