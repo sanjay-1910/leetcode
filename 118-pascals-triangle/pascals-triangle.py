@@ -8,8 +8,9 @@ class Solution:
             ans=[1]
             po=1
             for i in range(1,n-1):
-                po=po*((n-i)/i)
-                ans.append(round(po))
+                po=po*(n-i)
+                po=po//i
+                ans.append(po)
                 #po=po/i
             ans.append(1)
             return ans
