@@ -8,9 +8,9 @@ class Solution(object):
             return [1]
         ans=[1]
         po=1
-        rowIndex=rowIndex+1
-        for i in range(1,rowIndex-1):
-            po=po*(rowIndex-i)
+        #rowIndex=rowIndex+1
+        for i in range(1,rowIndex):
+            po=po*(rowIndex+1-i)
             po=po//i
             ans.append(po)
         ans.append(1)
