@@ -19,7 +19,7 @@ class Solution(object):
                 nums[i]=nums[brea]
                 nums[brea]=temp
                 break
-        nums[brea+1: ]=reversed(nums[brea+1:])
+        nums[brea+1: ]=nums[n-1:brea:-1]
         return nums
                 
                 
