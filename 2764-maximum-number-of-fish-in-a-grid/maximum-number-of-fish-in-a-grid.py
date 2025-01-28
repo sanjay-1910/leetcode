@@ -1,8 +1,6 @@
 class Solution:
     def findMaxFish(self, grid: List[List[int]]) -> int:
         def dfs(i,j,grid,dp):
-            if(dp[i][j]!=-1):
-                return dp[i][j]
             queue = [(i,j)]
             visited = set()
             visited.add((i,j))
@@ -21,7 +19,6 @@ class Solution:
                             cost+=dfs(ni,nj,grid,dp)
                             visited.add((ni,nj))
                             queue.append((ni,nj))
-            dp[i][j] = cost
             return cost
         dp = [[-1]*len(grid[0]) for i in range(len(grid))]
         final = 0
