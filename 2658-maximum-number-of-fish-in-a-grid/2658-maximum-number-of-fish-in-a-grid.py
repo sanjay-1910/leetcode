@@ -33,6 +33,36 @@ class Solution:
                 final = max(ans,final)
         return final
 
+
+
+#another approach
+
+# class Solution:
+#     def findMaxFish(self, grid: List[List[int]]) -> int:
+#         def dfs(i, j):
+#             if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]) or grid[i][j] == 0:
+#                 return 0
+
+#             # Capture the current value and mark the cell as visited
+#             fish = grid[i][j]
+#             grid[i][j] = 0  # Mark as visited by setting to 0
+
+#             # Explore all 4 directions
+#             fish += dfs(i - 1, j)
+#             fish += dfs(i + 1, j)
+#             fish += dfs(i, j - 1)
+#             fish += dfs(i, j + 1)
+
+#             return fish
+
+#         max_fish = 0
+#         for i in range(len(grid)):
+#             for j in range(len(grid[0])):
+#                 if grid[i][j] != 0:
+#                     max_fish = max(max_fish, dfs(i, j))
+
+#         return max_fish
+
                 
                 
 
