@@ -7,10 +7,12 @@ class Solution:
         intervals.sort(key=lambda x: x[1])
 
         # Step 2: Track non-overlapping intervals
-        prev_end = float('-inf')  # Track the end of the last included interval
-        non_overlap_count = 0
+        # prev_end = float('-inf')  # Track the end of the last included interval
+        non_overlap_count = 1
+        prev_end = intervals[0][1]
 
-        for start, end in intervals:
+        for i in range(1,len(intervals)):
+            start,end = intervals[i][0],intervals[i][1]
             if start >= prev_end:  # No overlap, include this interval
                 prev_end = end
                 non_overlap_count += 1  # Count this as non-overlapping
