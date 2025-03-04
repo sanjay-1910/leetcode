@@ -1,5 +1,3 @@
-#include <cmath> 
-
 class Solution {
 public:
     bool check(int n, int power, int sum) {
