@@ -10,7 +10,7 @@ class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         visited = image
         original = image[sr][sc]
-        if(original!=color):
+        if(original!=color):  # very important
             self.dfs(image,sr,sc,original,color,visited)
         return visited
 
