@@ -1,26 +1,32 @@
 class Solution:
-    def pal(self, s, i, j, memo):
+    def pal(self, s, i, j, dp):
         if i > j:
             return ""
         if i == j:
-            return s[i]  # Single character is a palindrome
-        
-        if (i, j) in memo:
-            return memo[(i, j)]
+            return s[i]
+        if dp[i][j] != -1:
+            return dp[i][j]
         
         if s[i] == s[j]:
-            middle_substring = self.pal(s, i + 1, j - 1, memo)
-            if len(middle_substring) == (j - i - 1):  # Ensure it's a valid palindrome
-                memo[(i, j)] = s[i] + middle_substring + s[j]
-                return memo[(i, j)]
+            mid = self.pal(s, i+1, j-1, dp)
+            if len(mid) == (j - 1 - i):  # Corrected length condition
+                dp[i][j] = s[i] + mid + s[j]
+                return dp[i][j]
         
-        # If not matching, try both possibilities and take the longer one
-        pal1 = self.pal(s, i, j - 1, memo)
-        pal2 = self.pal(s, i + 1, j, memo)
-        
-        memo[(i, j)] = pal1 if len(pal1) > len(pal2) else pal2
-        return memo[(i, j)]
+        # Ensure `left` and `right` are always defined
+        left = self.pal(s, i, j-1, dp)
+        right = self.pal(s, i+1, j, dp)
+
+        if len(left) > len(right):
+            dp[i][j] = left
+        else:
+            dp[i][j] = right
+        return dp[i][j]
 
     def longestPalindrome(self, s: str) -> str:
-        memo = {}
-        return self.pal(s, 0, len(s) - 1, memo)
+        dp = [[-1] * len(s) for _ in range(len(s))]
+        return self.pal(s, 0, len(s)-1, dp)
+
+
+# Driver Code
+
