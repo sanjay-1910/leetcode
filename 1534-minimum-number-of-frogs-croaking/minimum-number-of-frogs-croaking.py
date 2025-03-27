@@ -1,34 +1,47 @@
 class Solution:
+    def find_frogs(self, croakOfFrogs, index, croak, count, frog_count, max_frogs):
+        if index == len(croakOfFrogs):
+            # Check if all characters are balanced at the end
+            if all(count[i] == 0 for i in range(4)):
+                return max_frogs
+            else:
+                return -1
+        
+        ch = croakOfFrogs[index]
+        
+        # Get the index of the current character in "croak"
+        pos = croak.find(ch)
+        
+        if pos == 0:  # Start of a new croak ("c")
+            count[pos] += 1
+            frog_count += 1
+            max_frogs = max(max_frogs, frog_count)
+        
+        elif 0 < pos <= 4:  # Next valid character in the croak sequence
+            if count[pos - 1] == 0:
+                return -1  # Invalid sequence if the previous character is not available
+            count[pos - 1] -= 1
+            count[pos] += 1
+            
+            # If the frog finishes croaking ("k")
+            if pos == 4:
+                frog_count -= 1
+                count[pos] -= 1
+        
+        else:
+            return -1  # Invalid character
+        
+        # Recursive call for the next character
+        return self.find_frogs(croakOfFrogs, index + 1, croak, count, frog_count, max_frogs)
+    
     def minNumberOfFrogs(self, croakOfFrogs: str) -> int:
         croak = "croak"
-        frog_count = 0
-        max_frogs = 0
         
-        # Array to track the count of each character in the sequence
-        char_count = [0] * 5
-        
-        for ch in croakOfFrogs:
-            if ch not in croak:
-                return -1
-            
-            index = croak.index(ch)
-            char_count[index] += 1
-            
-            # Check that the previous character has enough counts before progressing
-            if index > 0 and char_count[index - 1] < char_count[index]:
-                return -1
-            
-            # If we encounter 'c', a new frog starts croaking
-            if ch == 'c':
-                frog_count += 1
-                max_frogs = max(max_frogs, frog_count)
-            
-            # If we encounter 'k', one frog completes the croak
-            elif ch == 'k':
-                frog_count -= 1
-        
-        # Check if all counts are balanced at the end
-        if frog_count == 0 and all(count == char_count[4] for count in char_count):
-            return max_frogs
-        else:
+        # Length must be divisible by 5 for valid sequences
+        if len(croakOfFrogs) % 5 != 0:
             return -1
+        
+        # Array to track the count of "c", "r", "o", "a" (skip "k" as it resets)
+        count = [0] * 5
+        
+        return self.find_frogs(croakOfFrogs, 0, croak, count, 0, 0)
