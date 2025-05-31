@@ -31,7 +31,7 @@ public:
             current->next = temp2;
         }
         ListNode* mergedList = fina->next;
-        delete fina;
+        // delete fina;
         return mergedList;
     }
 };
