@@ -17,20 +17,20 @@ public:
         ListNode* current = fina;
         while (temp != NULL && temp2 != NULL) {
             if (temp->val <= temp2->val) {
-                current->next = new ListNode(temp->val);
+                fina->next = new ListNode(temp->val);
                 temp = temp->next;
             } else {
-                current->next = new ListNode(temp2->val);
+                fina->next = new ListNode(temp2->val);
                 temp2 = temp2->next;
             }
-            current = current->next;
+            fina = fina->next;
         }
         if (temp != NULL) {
-            current->next = temp;
+            fina->next = temp;
         } else {
-            current->next = temp2;
+            fina->next = temp2;
         }
-        ListNode* mergedList = fina->next;
+        ListNode* mergedList = current->next;
         // delete fina;
         return mergedList;
     }
