@@ -3,15 +3,13 @@ public:
     int longestValidParentheses(string s) {
         stack<int> st;  // Use a stack to store indices only (char is unnecessary)
         int last_popped = -1;  // Stores the last valid index that was popped
-        int answer = 0; 
-        
+        int answer = 0;         
         for (int i = 0; i < s.size(); i++) {
             if (s[i] == '(') {
                 st.push(i);
             } else {  // s[i] == ')'
                 if (!st.empty()) {
-                    st.pop();  // Match found, pop the stack
-                    
+                    st.pop();  // Match found, pop the stack                  
                     if (!st.empty()) {
                         // If stack is not empty, valid substring is from st.top() to i
                         answer = max(answer, i - st.top());
