@@ -18,12 +18,10 @@ public:
         ans.pop_back();
         sum=sum-candidates[index];
         san(candidates,ans,sum,target,index+1,size);
-
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<int>ans;
         san(candidates,ans,0,target,0,candidates.size());
-        return final;
-        
+        return final;     
     }
 };
