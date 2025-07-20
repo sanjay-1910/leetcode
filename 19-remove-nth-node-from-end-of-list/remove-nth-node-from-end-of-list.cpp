@@ -28,7 +28,7 @@ public:
          {
             temp2=temp2->next;
             i=i+1;
-    }
+        }
        if(temp2->next==NULL)
        {
            return head;
