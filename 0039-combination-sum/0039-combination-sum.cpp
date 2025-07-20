@@ -13,8 +13,10 @@ public:
             return;
         }
         ans.push_back(candidates[index]);
-        san(candidates,ans,sum+candidates[index],target,index,size);
+        sum=sum+candidates[index];
+        san(candidates,ans,sum,target,index,size);
         ans.pop_back();
+        sum=sum-candidates[index];
         san(candidates,ans,sum,target,index+1,size);
 
     }
