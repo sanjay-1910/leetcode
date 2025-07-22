@@ -23,9 +23,6 @@ class Solution:
             if(grid[j][len(grid[0])-1] == 'O' and not visited[j][len(grid[0])-1]):
                 self.dfs(j,len(grid[0])-1,grid,new,visited)
         grid[:] = new
-        # for i in range(len(grid)):
-        #     for j in range(0,len(grid[0])):
-        #         grid[i][j] = new[i][j]
     
 
         
