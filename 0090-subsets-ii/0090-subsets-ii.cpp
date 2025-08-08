@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<int>>answer;
+vector<vector<int>>answer;
     void subsets(vector<int>&array,vector<int>&subset,int index,int n)
     {
         if(index == n)
@@ -22,5 +22,6 @@ public:
         sort(nums.begin(),nums.end());
         subsets(nums,subset,0,nums.size());
         return answer;
+        
     }
 };
