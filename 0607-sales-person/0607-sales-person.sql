@@ -21,6 +21,7 @@ WHERE s.sales_id NOT IN (
 --     SELECT c.com_id
 --     FROM Company c
 --     WHERE c.name = 'RED'
--- );
+-- ) order by s.sales_id;
+
 
 
