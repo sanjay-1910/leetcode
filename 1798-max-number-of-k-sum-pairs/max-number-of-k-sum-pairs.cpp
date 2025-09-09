@@ -10,8 +10,6 @@ public:
             if(nums[i]+nums[j]==k && i!=j)
             {
                 c=c+1;
-                // nums.erase(nums.begin()+i);
-                // nums.erase(nums.begin()+j);
                 i=i+1;
                 j=j-1;
             }
