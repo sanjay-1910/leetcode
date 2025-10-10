@@ -21,10 +21,7 @@ class Solution:
             l2.append(w2[k])
         l1.sort()
         l2.sort()
-        if(l1 == l2):
-            return True
-        else:
-            return False
+        return sorted(w1.values()) == sorted(w2.values()) and set(w1.keys()) == set(w2.keys())
 
 
 
